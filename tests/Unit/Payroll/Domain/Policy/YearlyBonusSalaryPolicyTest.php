@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Tests\Payroll\Domain\Policy;
+namespace App\Tests\Unit\Payroll\Domain\Policy;
 
 use App\Payroll\Domain\HiredAt;
 use App\Payroll\Domain\Policy\Exception\PolicyException;

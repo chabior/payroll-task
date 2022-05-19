@@ -16,9 +16,15 @@ services:
     App\:
         resource: '../src/'
         exclude:
-            - '../src/DependencyInjection/'
-            - '../src/Entity/'
             - '../src/Kernel.php'
 
     # add more service definitions when explicit configuration is needed
     # please note that last definitions always *replace* previous ones
+
+
+when@test:
+    services:
+        App\Payroll\Domain\ReadModel\PayrollListReadModel:
+            public: true
+            arguments:
+                - '@doctrine.dbal.default_connection'

@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Payroll\Domain\Policy;
 
+use App\Payroll\Domain\BonusName;
 use App\Payroll\Domain\HiredAt;
 use App\Payroll\Domain\Policy\Exception\PolicyException;
 use App\Payroll\Domain\Salary;
@@ -29,5 +30,10 @@ class YearlyBonusSalaryPolicy implements BonusSalaryPolicy
         $yearsDiff = min(self::MAX_YEARS, $yearsDiff);
 
         return new Salary($this->perYear->forYears($yearsDiff));
+    }
+
+    public function getName(): BonusName
+    {
+        return new BonusName('yearly');
     }
 }

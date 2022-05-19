@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Payroll\Domain\Policy;
 
+use App\Payroll\Domain\BonusName;
 use App\Payroll\Domain\HiredAt;
 use App\Payroll\Domain\PercentageSalaryRatio;
 use App\Payroll\Domain\Policy\Exception\PolicyException;
@@ -23,5 +24,10 @@ class PercentageBonusSalaryPolicy implements BonusSalaryPolicy
         }
 
         return $baseSalary->multiply($this->ratio);
+    }
+
+    public function getName(): BonusName
+    {
+        return new BonusName('percentage');
     }
 }

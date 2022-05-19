@@ -9,11 +9,15 @@
         "ext-bcmath": "*",
         "ext-ctype": "*",
         "ext-iconv": "*",
+        "doctrine/doctrine-bundle": "^2.6",
+        "doctrine/doctrine-migrations-bundle": "^3.2",
+        "doctrine/orm": "^2.12",
         "nesbot/carbon": "^2.58",
         "symfony/console": "6.0.*",
         "symfony/dotenv": "6.0.*",
         "symfony/flex": "^2",
         "symfony/framework-bundle": "6.0.*",
+        "symfony/proxy-manager-bridge": "6.0.*",
         "symfony/runtime": "6.0.*",
         "symfony/uid": "6.0.*",
         "symfony/yaml": "6.0.*"
@@ -25,6 +29,7 @@
         "squizlabs/php_codesniffer": "*",
         "symfony/browser-kit": "6.0.*",
         "symfony/css-selector": "6.0.*",
+        "symfony/maker-bundle": "^1.43",
         "symfony/phpunit-bridge": "^6.0",
         "vimeo/psalm": "^4.23",
         "weirdan/doctrine-psalm-plugin": "^2.3"
@@ -74,7 +79,7 @@
         "psalm": "./vendor/bin/psalm",
         "phpcs": "./vendor/bin/phpcs src --standard=phpcs.xml.dist",
         "phpcbf": "./vendor/bin/phpcbf src --standard=phpcs.xml.dist",
-        "tests": "bin/phpunit"
+        "tests": "bin/console doctrine:migrations:migrate --allow-no-migration --env=test && bin/phpunit"
     },
     "conflict": {
         "symfony/symfony": "*"

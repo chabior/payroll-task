@@ -8,13 +8,13 @@ use InvalidArgumentException;
 
 class Salary
 {
-    public function __construct(private readonly int $base)
+    public function __construct(private readonly int $value)
     {
-        if ($this->base < 0) {
+        if ($this->value < 0) {
             throw new InvalidArgumentException(
                 sprintf(
                     'Salary must be higher than 0. %s given',
-                    $this->base
+                    $this->value
                 )
             );
         }
@@ -22,11 +22,16 @@ class Salary
 
     public function multiply(PercentageSalaryRatio $ratio): Salary
     {
-        return new self((int) round((float) bcmul((string) $this->base, (string) $ratio->ratio)));
+        return new self((int) round((float) bcmul((string) $this->value, (string) $ratio->ratio)));
     }
 
     public function add(Salary $bonusSalary): Salary
     {
-        return new Salary($this->base + $bonusSalary->base);
+        return new Salary($this->value + $bonusSalary->value);
+    }
+
+    public function getValue(): int
+    {
+        return $this->value;
     }
 }

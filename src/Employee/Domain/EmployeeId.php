@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Payroll\Domain;
+namespace App\Employee\Domain;
 
 use App\Common\UUID;
 

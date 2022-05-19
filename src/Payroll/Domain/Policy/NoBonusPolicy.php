@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace App\Payroll\Domain\Policy;
 
+use A\B;
+use App\Payroll\Domain\BonusName;
 use App\Payroll\Domain\HiredAt;
 use App\Payroll\Domain\Salary;
 use DateTimeInterface;
@@ -13,5 +15,10 @@ class NoBonusPolicy implements BonusSalaryPolicy
     public function calculate(Salary $baseSalary, HiredAt $hiredAt, DateTimeInterface $at): Salary
     {
         return new Salary(0);
+    }
+
+    public function getName(): BonusName
+    {
+        return new BonusName('no bonus');
     }
 }

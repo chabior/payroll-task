@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Tests\Payroll\Domain;
+namespace App\Tests\Unit\Payroll\Domain;
 
 use App\Common\UUID;
 use App\Payroll\Domain\DepartmentId;

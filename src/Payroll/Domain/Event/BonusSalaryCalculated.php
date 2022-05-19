@@ -6,6 +6,7 @@ namespace App\Payroll\Domain\Event;
 
 use App\Common\DomainEvent;
 use App\Common\UUID;
+use App\Payroll\Domain\BonusName;
 use App\Payroll\Domain\EmployeeId;
 use App\Payroll\Domain\Salary;
 use DateTimeImmutable;
@@ -19,6 +20,7 @@ class BonusSalaryCalculated implements DomainEvent
         private readonly Salary $baseSalary,
         private readonly Salary $bonusSalary,
         private readonly Salary $totalSalary,
+        private readonly BonusName $bonusName,
         private readonly DateTimeInterface $at,
     ) {
     }
@@ -28,13 +30,14 @@ class BonusSalaryCalculated implements DomainEvent
         Salary $baseSalary,
         Salary $bonusSalary,
         Salary $totalSalary,
+        BonusName $bonusName,
         DateTimeInterface $at = null
     ) :self {
         if ($at === null) {
             $at = new DateTimeImmutable();
         }
 
-        return new self(UUID::random(), $employeeId, $baseSalary, $bonusSalary, $totalSalary, $at);
+        return new self(UUID::random(), $employeeId, $baseSalary, $bonusSalary, $totalSalary, $bonusName, $at);
     }
 
     public function getEventId(): UUID
@@ -50,5 +53,25 @@ class BonusSalaryCalculated implements DomainEvent
     public function getTotalSalary(): Salary
     {
         return $this->totalSalary;
+    }
+
+    public function getBaseSalary(): Salary
+    {
+        return $this->baseSalary;
+    }
+
+    public function getAt(): DateTimeInterface
+    {
+        return $this->at;
+    }
+
+    public function getEmployeeId(): EmployeeId
+    {
+        return $this->employeeId;
+    }
+
+    public function getBonusName(): BonusName
+    {
+        return $this->bonusName;
     }
 }

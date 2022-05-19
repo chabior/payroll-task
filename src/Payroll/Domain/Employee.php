@@ -36,6 +36,7 @@ class Employee
                 $this->baseSalary,
                 $this->bonusSalary,
                 $this->baseSalary->add($this->bonusSalary),
+                $salaryPolicy->getName(),
                 $at
             )
         );
