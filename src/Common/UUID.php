@@ -4,12 +4,11 @@ declare(strict_types=1);
 
 namespace App\Common;
 
+use Symfony\Component\Uid\Uuid as SymfonyUuid;
+
 final class UUID
 {
-    /**
-     * @var string
-     */
-    private $value;
+    private string $value;
 
     public function __construct(string $value)
     {
@@ -22,7 +21,7 @@ final class UUID
 
     public static function random(): self
     {
-        return new self(RamseyUuid::getFactory()->uuid4()->toString());
+        return new self(SymfonyUuid::v4()->toRfc4122());
     }
 
     public function __toString(): string

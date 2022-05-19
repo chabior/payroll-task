@@ -2,9 +2,11 @@
 
 declare(strict_types=1);
 
-namespace Dna\OnlineCourses\Shared\Common;
+namespace App\Common;
+
+use App\Common\UUID;
 
 interface DomainEvent
 {
-    public function eventId(): UUID;
+    public function getEventId(): UUID;
 }

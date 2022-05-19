@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Payroll\Domain;
 
 use App\Common\Result;
+use App\Payroll\Domain\Event\BonusSalaryCalculated;
 use App\Payroll\Domain\Policy\BonusSalaryPolicy;
 use DateTimeImmutable;
 use DateTimeInterface;
@@ -29,7 +30,15 @@ class Employee
     {
         $this->bonusSalary = $salaryPolicy->calculate($this->baseSalary, $this->hiredAt, $at);
 
-        return Result::success();
+        return Result::success(
+                BonusSalaryCalculated::create(
+                    $this->employeeId,
+                    $this->baseSalary,
+                    $this->bonusSalary,
+                    $this->baseSalary->add($this->bonusSalary),
+                    $at
+                )
+        );
     }
 
     public function getDepartmentId(): DepartmentId

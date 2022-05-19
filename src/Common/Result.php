@@ -7,7 +7,6 @@ namespace App\Common;
 
 use App\Common\Result\Failure;
 use App\Common\Result\Success;
-use Dna\OnlineCourses\Shared\Common\DomainEvent;
 
 abstract class Result
 {

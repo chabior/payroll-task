@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace App\Common\Result;
 
+use App\Common\DomainEvent;
 use App\Common\Result;
-use Dna\OnlineCourses\Shared\Common\DomainEvent;
 
 final class Success extends Result
 {

@@ -24,4 +24,9 @@ class Salary
     {
         return new self((int) round((float) bcmul((string) $this->base, (string) $ratio->ratio)));
     }
+
+    public function add(Salary $bonusSalary): Salary
+    {
+        return new Salary($this->base + $bonusSalary->base);
+    }
 }

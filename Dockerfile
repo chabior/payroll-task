@@ -5,4 +5,9 @@ RUN chmod +x /usr/local/bin/install-php-extensions
 
 RUN install-php-extensions bcmath
 
+RUN apt-get update && apt-get install -y libpq-dev libmcrypt-dev libonig-dev libzip-dev  \
+    libmagickwand-dev --no-install-recommends
+
+RUN apt-get install -y --no-install-recommends git zip unzip
+
 COPY --from=composer:2.2 /usr/bin/composer /usr/local/bin/composer
