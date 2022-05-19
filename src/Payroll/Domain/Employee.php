@@ -13,11 +13,11 @@ use DateTimeInterface;
 class Employee
 {
     public function __construct(
-        private readonly EmployeeId $employeeId,
-        private readonly Salary $baseSalary,
-        private Salary $bonusSalary,
+        private readonly EmployeeId   $employeeId,
+        private readonly Salary       $baseSalary,
+        private Salary                $bonusSalary,
         private readonly DepartmentId $departmentId,
-        private readonly HiredAt $hiredAt
+        private readonly HiredAt      $hiredAt
     ) {
     }
 
@@ -31,13 +31,13 @@ class Employee
         $this->bonusSalary = $salaryPolicy->calculate($this->baseSalary, $this->hiredAt, $at);
 
         return Result::success(
-                BonusSalaryCalculated::create(
-                    $this->employeeId,
-                    $this->baseSalary,
-                    $this->bonusSalary,
-                    $this->baseSalary->add($this->bonusSalary),
-                    $at
-                )
+            BonusSalaryCalculated::create(
+                $this->employeeId,
+                $this->baseSalary,
+                $this->bonusSalary,
+                $this->baseSalary->add($this->bonusSalary),
+                $at
+            )
         );
     }
 
