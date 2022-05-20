@@ -6,5 +6,4 @@ namespace App\Common;
 
 interface EventHandler
 {
-
 }

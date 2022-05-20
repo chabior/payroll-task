@@ -32,7 +32,7 @@ class BonusSalaryCalculated implements DomainEvent
         Salary $totalSalary,
         BonusName $bonusName,
         DateTimeInterface $at = null
-    ) :self {
+    ): self {
         if ($at === null) {
             $at = new DateTimeImmutable();
         }

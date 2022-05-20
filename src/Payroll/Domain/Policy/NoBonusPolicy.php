@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace App\Payroll\Domain\Policy;
 
-use A\B;
 use App\Payroll\Domain\BonusName;
 use App\Payroll\Domain\HiredAt;
 use App\Payroll\Domain\Salary;

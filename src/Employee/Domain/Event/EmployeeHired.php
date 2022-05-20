@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace App\Employee\Domain\Event;
 
-
 use App\Common\DomainEvent;
 use App\Common\UUID;
 use App\Employee\Domain\DepartmentId;
@@ -24,8 +23,7 @@ class EmployeeHired implements DomainEvent
         public readonly FirstName $firstName,
         public readonly LastName $lastName,
         public readonly HiredAt $hiredAt,
-    )
-    {
+    ) {
     }
 
     public function getEventId(): UUID

@@ -13,11 +13,11 @@ use DateTimeInterface;
 class Employee
 {
     public function __construct(
-        private readonly EmployeeId   $employeeId,
-        private readonly Salary       $baseSalary,
-        private Salary                $bonusSalary,
+        private readonly EmployeeId $employeeId,
+        private readonly Salary $baseSalary,
+        private Salary $bonusSalary,
         private readonly DepartmentId $departmentId,
-        private readonly HiredAt      $hiredAt
+        private readonly HiredAt $hiredAt
     ) {
     }
 
