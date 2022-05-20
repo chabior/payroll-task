@@ -24,7 +24,7 @@ services:
 
 when@test:
     services:
-        App\Payroll\Domain\ReadModel\PayrollListReadModel:
+        App\Payroll\Infrastructure\DbalPayrollListReadModel:
             public: true
             arguments:
                 - '@doctrine.dbal.default_connection'

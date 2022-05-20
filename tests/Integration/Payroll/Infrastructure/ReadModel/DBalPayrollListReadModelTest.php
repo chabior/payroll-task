@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Tests\Integration\Payroll\Domain\ReadModel;
+namespace App\Tests\Integration\Payroll\Infrastructure\ReadModel;
 
 use App\Common\UUID;
 use App\Employee\Domain\DepartmentId;
@@ -15,15 +15,15 @@ use App\Employee\Domain\LastName;
 use App\Payroll\Domain\BonusName;
 use App\Payroll\Domain\EmployeeId as PayrollEmployeeId;
 use App\Payroll\Domain\Event\BonusSalaryCalculated;
-use App\Payroll\Domain\ReadModel\PayrollListReadModel;
 use App\Payroll\Domain\Salary;
+use App\Payroll\Infrastructure\DbalPayrollListReadModel;
 use DateTimeImmutable;
 use RuntimeException;
 use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
 
-class PayrollListReadModelTest extends KernelTestCase
+class DBalPayrollListReadModelTest extends KernelTestCase
 {
-    private PayrollListReadModel $readModel;
+    private DbalPayrollListReadModel $readModel;
 
     protected function setUp(): void
     {
@@ -102,8 +102,8 @@ class PayrollListReadModelTest extends KernelTestCase
         );
     }
 
-    private function getObj(): PayrollListReadModel
+    private function getObj(): DbalPayrollListReadModel
     {
-        return self::getContainer()->get(PayrollListReadModel::class);
+        return self::getContainer()->get(DbalPayrollListReadModel::class);
     }
 }
