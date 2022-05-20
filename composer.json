@@ -40,7 +40,8 @@
             "composer/package-versions-deprecated": true,
             "symfony/flex": true,
             "symfony/runtime": true,
-            "dealerdirect/phpcodesniffer-composer-installer": true
+            "dealerdirect/phpcodesniffer-composer-installer": true,
+            "infection/extension-installer": false
         },
         "optimize-autoloader": true,
         "preferred-install": {
@@ -80,7 +81,7 @@
         "psalm": "./vendor/bin/psalm --show-info=true",
         "phpcs": "./vendor/bin/phpcs src --standard=phpcs.xml.dist",
         "phpcbf": "./vendor/bin/phpcbf src --standard=phpcs.xml.dist",
-        "tests": "bin/console doctrine:migrations:migrate --allow-no-migration --env=test && bin/phpunit"
+        "tests": "bin/console doctrine:migrations:migrate --allow-no-migration --no-interaction --env=test && bin/phpunit"
     },
     "conflict": {
         "symfony/symfony": "*"

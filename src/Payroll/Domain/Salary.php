@@ -22,7 +22,7 @@ class Salary
 
     public function multiply(PercentageSalaryRatio $ratio): Salary
     {
-        return new self((int) round((float) bcmul((string) $this->value, (string) $ratio->ratio)));
+        return new self((int) bcmul((string) $this->value, (string) $ratio->ratio));
     }
 
     public function add(Salary $bonusSalary): Salary
