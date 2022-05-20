@@ -6,10 +6,10 @@ namespace App\Department\Domain;
 
 interface DepartmentRepository
 {
-    public function save(Department $department);
+    public function save(Department $department): void;
 
     /**
-     * @return Department[]
+     * @return list<Department>
      */
     public function all(): array;
 

@@ -57,6 +57,9 @@ class PayrollListReadModel
 
     public function hasRecordFor(EmployeeId $employeeId): bool
     {
+        /**
+         * @var string|false $data
+         */
         $data = $this->connection->fetchOne('SELECT employee_id FROM payroll_list WHERE employee_id = :employee_id ', [
             'employee_id' => $employeeId->UUID->__toString(),
         ]);

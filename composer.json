@@ -77,7 +77,7 @@
         "post-update-cmd": [
             "@auto-scripts"
         ],
-        "psalm": "./vendor/bin/psalm",
+        "psalm": "./vendor/bin/psalm --show-info=true",
         "phpcs": "./vendor/bin/phpcs src --standard=phpcs.xml.dist",
         "phpcbf": "./vendor/bin/phpcbf src --standard=phpcs.xml.dist",
         "tests": "bin/console doctrine:migrations:migrate --allow-no-migration --env=test && bin/phpunit"

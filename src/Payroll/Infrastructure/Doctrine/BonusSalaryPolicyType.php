@@ -7,6 +7,7 @@ namespace App\Payroll\Infrastructure\Doctrine;
 use App\Payroll\Domain\Policy\BonusSalaryPolicy;
 use Doctrine\DBAL\Platforms\AbstractPlatform;
 use Doctrine\DBAL\Types\TextType;
+use InvalidArgumentException;
 
 class BonusSalaryPolicyType extends TextType
 {
@@ -16,7 +17,19 @@ class BonusSalaryPolicyType extends TextType
             return null;
         }
 
-        return unserialize($value);
+        if (!is_string($value)) {
+            throw new InvalidArgumentException('Only string can be converted to BonusSalaryPolicy');
+        }
+
+        /**
+         * @var BonusSalaryPolicy $unserialize
+         */
+        $unserialize = unserialize($value);
+        if (!$unserialize instanceof BonusSalaryPolicy) {
+            throw new InvalidArgumentException('Invalid unserialize value');
+        }
+
+        return $unserialize;
     }
 
     public function convertToDatabaseValue($value, AbstractPlatform $platform): ?string

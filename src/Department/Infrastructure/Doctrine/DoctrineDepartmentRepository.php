@@ -10,6 +10,10 @@ use App\Department\Domain\DepartmentRepository;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 
+/**
+ * @method list<Department> findAll()
+ * @method ?Department findOneBy(array $criteria, ?array $oderBy = null)
+ */
 class DoctrineDepartmentRepository extends ServiceEntityRepository implements DepartmentRepository
 {
     public function __construct(ManagerRegistry $registry)
@@ -17,7 +21,7 @@ class DoctrineDepartmentRepository extends ServiceEntityRepository implements De
         parent::__construct($registry, Department::class);
     }
 
-    public function save(Department $department)
+    public function save(Department $department): void
     {
         $em = $this->getEntityManager();
         $em->persist($department);

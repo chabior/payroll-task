@@ -6,6 +6,7 @@ namespace App\Common;
 
 use Doctrine\DBAL\Platforms\AbstractPlatform;
 use Doctrine\DBAL\Types\StringType;
+use InvalidArgumentException;
 
 class UUIDType extends StringType
 {
@@ -13,6 +14,10 @@ class UUIDType extends StringType
     {
         if ($value === null) {
             return null;
+        }
+
+        if (!is_string($value)) {
+            throw new InvalidArgumentException('Only string can be converted to UUID');
         }
 
         return new UUID($value);

@@ -38,7 +38,7 @@ class CreateBonusSalaryPolicyForDepartmentCommand extends Command
     {
         $style = new SymfonyStyle($input, $output);
 
-        $departmentName = $style->choice(
+        $departmentName = (string) $style->choice(
             'Department ID',
             array_map(static function (Department $department) {
                 return $department->getName()->name;
@@ -51,6 +51,9 @@ class CreateBonusSalaryPolicyForDepartmentCommand extends Command
             return 1;
         }
 
+        /**
+         * @var class-string $policy
+         */
         $policy = $style->choice(
             'Bonus salary policy',
             [
@@ -61,21 +64,27 @@ class CreateBonusSalaryPolicyForDepartmentCommand extends Command
 
         switch ($policy) {
             case PercentageBonusSalaryPolicy::class:
+                /**
+                 * @var PercentageSalaryRatio $ratio
+                 */
                 $ratio = $style->ask(
                     'ratio - float value bigger than 0',
                     null,
                     static function (string $value) {
-                        return new PercentageSalaryRatio((float)$value);
+                        return new PercentageSalaryRatio((float) $value);
                     }
                 );
                 $bonusPolicy = new PercentageBonusSalaryPolicy($ratio);
                 break;
             case YearlyBonusSalaryPolicy::class:
+                /**
+                 * @var YearlyBonus $bonus
+                 */
                 $bonus = $style->ask(
                     'Fixed value per every year of work',
                     null,
                     static function (string $value) {
-                        return new YearlyBonus((int)$value);
+                        return new YearlyBonus((int) $value);
                     }
                 );
                 $bonusPolicy = new YearlyBonusSalaryPolicy($bonus);

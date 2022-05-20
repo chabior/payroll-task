@@ -11,6 +11,9 @@ use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\DBAL\Exception\UniqueConstraintViolationException;
 use Doctrine\Persistence\ManagerRegistry;
 
+/**
+ * @method list<Employee> findAll()
+ */
 class DoctrineEmployeeRepository extends ServiceEntityRepository implements EmployeeRepository
 {
     public function __construct(ManagerRegistry $registry)

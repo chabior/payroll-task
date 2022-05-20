@@ -12,6 +12,9 @@ use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\DBAL\Exception\UniqueConstraintViolationException;
 use Doctrine\Persistence\ManagerRegistry;
 
+/**
+ * @method ?DepartmentBonusSalaryPolicyConfig findOneBy(array $criteria, ?array $oderBy = null)
+ */
 class DoctrineDepartmentBonusSalarySalaryPolicyRepository extends ServiceEntityRepository implements
     DepartmentBonusSalaryPolicyRepository
 {

@@ -30,7 +30,7 @@ class CreateDepartmentCommand extends Command
     {
         $style = new SymfonyStyle($input, $output);
 
-        $departmentName = $style->ask('Department name');
+        $departmentName = (string) $style->ask('Department name');
 
         $this->departmentRepository->save(
             new Department(

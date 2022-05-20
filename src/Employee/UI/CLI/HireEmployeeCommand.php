@@ -41,13 +41,13 @@ class HireEmployeeCommand extends Command
     {
         $style = new SymfonyStyle($input, $output);
 
-        $firstName = $style->ask(
+        $firstName = (string) $style->ask(
             'First name'
         );
-        $lastName = $style->ask(
+        $lastName = (string) $style->ask(
             'Last name'
         );
-        $departmentName = $style->choice(
+        $departmentName = (string) $style->choice(
             'Department ID',
             array_map(static function (Department $department) {
                 return $department->getName()->name;
@@ -60,6 +60,9 @@ class HireEmployeeCommand extends Command
             return 1;
         }
 
+        /**
+         * @var DateTimeInterface $hiredAt
+         */
         $hiredAt = $style->ask(
             'Hired At (in Y-m-d format)',
             null,
@@ -74,6 +77,10 @@ class HireEmployeeCommand extends Command
                 return $date;
             }
         );
+        if ($hiredAt instanceof DateTimeInterface) {
+            $style->error('Invalid hiredAt date');
+            return 1;
+        }
 
         $this->eventBus->dispatch(
             new EmployeeHired(
