@@ -1,0 +1,5 @@
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping">
+    <embeddable name="App\Payroll\Domain\HiredAt">
+        <field name="date" type="datetime" column="hired_at" />
+    </embeddable>
+</doctrine-mapping>

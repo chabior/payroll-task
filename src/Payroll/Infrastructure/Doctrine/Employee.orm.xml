@@ -1,0 +1,13 @@
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping">
+    <entity
+            name="App\Payroll\Domain\Employee"
+            table="employee"
+            repository-class="App\Payroll\Infrastructure\Doctrine\DoctrineEmployeeRepository">
+
+        <embedded name="employeeId" class="\App\Payroll\Domain\EmployeeId" use-column-prefix="false" />
+        <embedded name="baseSalary" class="\App\Payroll\Domain\Salary" use-column-prefix="true" column-prefix="base_" />
+        <embedded name="bonusSalary" class="\App\Payroll\Domain\Salary" use-column-prefix="true" column-prefix="bonus_" />
+        <embedded name="departmentId" class="\App\Payroll\Domain\DepartmentId" use-column-prefix="false" />
+        <embedded name="hiredAt" class="\App\Payroll\Domain\HiredAt" use-column-prefix="false" />
+    </entity>
+</doctrine-mapping>

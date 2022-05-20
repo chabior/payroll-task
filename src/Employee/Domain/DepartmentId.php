@@ -9,7 +9,7 @@ use Stringable;
 
 class DepartmentId implements Stringable
 {
-    public function __construct(private readonly UUID $department)
+    public function __construct(public readonly UUID $department)
     {
     }
 

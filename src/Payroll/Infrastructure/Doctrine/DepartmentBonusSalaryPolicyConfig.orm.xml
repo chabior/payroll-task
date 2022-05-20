@@ -1,0 +1,14 @@
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping">
+    <entity
+            name="App\Payroll\Domain\DepartmentBonusSalaryPolicyConfig"
+            table="department_bonus_salary_policy_config"
+            repository-class="App\Payroll\Infrastructure\Doctrine\DoctrineDepartmentBonusSalarySalaryPolicyRepository">
+
+        <id name="id" type="uuid_type" column="id" length="64" />
+        <embedded name="departmentId" class="App\Payroll\Domain\DepartmentId" use-column-prefix="false" />
+        <field name="bonusSalaryPolicy" type="bonus_salary_policy_type" column="bonus_salary_policy" />
+        <unique-constraints>
+            <unique-constraint columns="department_id"/>
+        </unique-constraints>
+    </entity>
+</doctrine-mapping>

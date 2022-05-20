@@ -21,6 +21,20 @@ class Employee
     ) {
     }
 
+    public static function create(
+        EmployeeId $employeeId,
+        DepartmentId $departmentId,
+        HiredAt $hiredAt
+    ): self {
+        return new self(
+            $employeeId,
+            new Salary(10000),
+            new Salary(0),
+            $departmentId,
+            $hiredAt
+        );
+    }
+
     public function calculateCurrentBonusSalary(BonusSalaryPolicy $salaryPolicy): Result
     {
         return $this->calculateBonusSalaryAt($salaryPolicy, new DateTimeImmutable());
