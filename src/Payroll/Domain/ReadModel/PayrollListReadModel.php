@@ -15,4 +15,11 @@ interface PayrollListReadModel
     public function handleEmployeeHired(EmployeeHired $employeeHired): void;
 
     public function hasRecordFor(EmployeeId $employeeId): bool;
+
+    /**
+     * @return PayrollListItem[]
+     */
+    public function all(PayrollFilters $filters): array;
+
+    public function clearAll(): void;
 }

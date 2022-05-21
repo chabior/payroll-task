@@ -24,7 +24,7 @@ class BonusSalaryPolicyType extends TextType
         /**
          * @var BonusSalaryPolicy $unserialize
          */
-        $unserialize = unserialize($value);
+        $unserialize = unserialize(stripslashes($value));
         if (!$unserialize instanceof BonusSalaryPolicy) {
             throw new InvalidArgumentException('Invalid unserialize value');
         }
@@ -42,6 +42,6 @@ class BonusSalaryPolicyType extends TextType
             return null;
         }
 
-        return serialize($value);
+        return addslashes(serialize($value));
     }
 }

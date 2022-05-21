@@ -77,7 +77,7 @@ class HireEmployeeCommand extends Command
                 return $date;
             }
         );
-        if ($hiredAt instanceof DateTimeInterface) {
+        if (!$hiredAt instanceof DateTimeInterface) {
             $style->error('Invalid hiredAt date');
             return 1;
         }

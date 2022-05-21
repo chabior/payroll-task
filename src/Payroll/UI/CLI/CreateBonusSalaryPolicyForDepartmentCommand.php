@@ -94,10 +94,19 @@ class CreateBonusSalaryPolicyForDepartmentCommand extends Command
                 return 1;
         }
 
+        $departmentId = new DepartmentId(new UUID($department->getId()->__toString()));
+        $config = $this->departmentBonusSalaryPolicyRepository->findForDepartment($departmentId);
+        if ($config) {
+            $style->error(
+                sprintf('Policy for department %s already exists', $departmentName)
+            );
+            return 1;
+        }
+
         $this->departmentBonusSalaryPolicyRepository->save(
             new DepartmentBonusSalaryPolicyConfig(
                 UUID::random(),
-                new DepartmentId(new UUID($department->getId()->__toString())),
+                $departmentId,
                 $bonusPolicy
             )
         );
