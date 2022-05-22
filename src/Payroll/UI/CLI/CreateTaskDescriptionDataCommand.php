@@ -52,7 +52,7 @@ class CreateTaskDescriptionDataCommand extends Command
             [
                 0,
                 1,
-                10000
+                10000,
             ]
         );
         $this->executeCommand(
@@ -60,7 +60,7 @@ class CreateTaskDescriptionDataCommand extends Command
             [
                 1,
                 0,
-                0.1
+                0.1,
             ]
         );
         $this->executeCommand(
@@ -86,6 +86,7 @@ class CreateTaskDescriptionDataCommand extends Command
     }
 
     /**
+     * @param array<string|int|float> $inputs
      * @return resource
      */
     private function createStream(array $inputs)
@@ -118,6 +119,9 @@ class CreateTaskDescriptionDataCommand extends Command
         );
     }
 
+    /**
+     * @param array<string|int|float> $inputs
+     */
     private function executeCommand(Command $command, array $inputs): void
     {
         $arrayInput = new ArrayInput([]);
