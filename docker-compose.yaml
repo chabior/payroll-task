@@ -19,7 +19,7 @@ services:
       POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-ChangeMe}
       POSTGRES_USER: ${POSTGRES_USER:-symfony}
     volumes:
-      - db-data:/var/lib/postgresql/data:rw
+      - db-data-new1:/var/lib/postgresql/data:rw
 
 volumes:
-  db-data:
+  db-data-new1:

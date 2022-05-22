@@ -21,7 +21,6 @@ use App\Payroll\Domain\ReadModel\PayrollListItem;
 use App\Payroll\Domain\Salary;
 use App\Payroll\Infrastructure\DbalPayrollListReadModel;
 use DateTimeImmutable;
-use Doctrine\DBAL\Connection;
 use RuntimeException;
 use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
 
@@ -42,7 +41,7 @@ class DBalPayrollListReadModelTest extends KernelTestCase
     {
         parent::tearDown();
 
-        self::getContainer()->get(Connection::class)->executeStatement('DELETE FROM payroll_list');
+        $this->readModel->clearAll();
     }
 
     public function testHandleEmployeeHired(): void
@@ -87,13 +86,26 @@ class DBalPayrollListReadModelTest extends KernelTestCase
                 $employeeId,
                 new Salary(100),
                 new Salary(100),
-                new Salary(100),
+                new Salary(200),
                 new BonusName('yearly'),
             )
         );
 
-        $result = $this->readModel->hasRecordFor(new PayrollEmployeeId($employeeId->UUID));
-        $this::assertTrue($result);
+        $result = $this->readModel->all(new PayrollFilters(null));
+        $this::assertCount(1, $result);
+
+        $this::assertEquals(
+            new PayrollListItem(
+                'Ania',
+                'Kowalska',
+                'Department',
+                100,
+                100,
+                200,
+                'yearly'
+            ),
+            $result[0]
+        );
     }
 
     public function testExceptionWhenBonusSalaryHappensForNotExistingEmployee(): void

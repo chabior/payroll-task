@@ -28,7 +28,7 @@ class Employee
     ): self {
         return new self(
             $employeeId,
-            new Salary(10000),
+            new Salary(100000),
             new Salary(0),
             $departmentId,
             $hiredAt

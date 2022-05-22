@@ -12,7 +12,7 @@ class YearlyBonus
 
     public function forYears(int $years): int
     {
-        if ($years <= 0) {
+        if ($years < 0) {
             return 0;
         }
 

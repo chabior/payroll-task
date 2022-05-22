@@ -61,6 +61,20 @@ class DoctrineDepartmentBonusSalarySalaryPolicyRepositoryTest extends KernelTest
                 new NoBonusPolicy()
             )
         );
+    }
 
+    public function testConfigForDepartmentCanBeFound(): void
+    {
+        $departmentId = new DepartmentId(UUID::random());
+        $this->repo->save(
+            new DepartmentBonusSalaryPolicyConfig(
+                UUID::random(),
+                $departmentId,
+                new NoBonusPolicy()
+            )
+        );
+
+        $config = $this->repo->findForDepartment($departmentId);
+        $this::assertNotNull($config);
     }
 }

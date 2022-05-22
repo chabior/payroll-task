@@ -1,0 +1,36 @@
+{
+    "source": {
+        "directories": [
+            "src/Payroll"
+        ],
+        "excludes": [
+            "{CLI/.*}",
+            "Infrastructure/Doctrine/BonusSalaryPolicyType.php",
+            "Domain/Policy/Exception/PolicyException.php"
+        ]
+    },
+    "timeout": 10,
+    "tmpDir": "/tmp/tmp-folder",
+    "phpUnit": {
+        "configDir": "/app",
+        "customPath": "/app/bin/phpunit"
+    },
+    "logs": {
+        "text": "/app/var/log/infection.log"
+    },
+    "mutators": {
+        "@default": true,
+       "LessThan": {
+            "ignore": [
+                "App\\Payroll\\Domain\\YearlyBonus::forYears"
+            ]
+       },
+       "BCMath" : false,
+       "PublicVisibility": false,
+       "DecrementInteger": {
+        "ignore": [
+        ]
+       }
+    },
+    "testFramework":"phpunit"
+}

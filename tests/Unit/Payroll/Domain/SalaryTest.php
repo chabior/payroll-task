@@ -6,6 +6,7 @@ namespace App\Tests\Unit\Payroll\Domain;
 
 use App\Payroll\Domain\PercentageSalaryRatio;
 use App\Payroll\Domain\Salary;
+use InvalidArgumentException;
 use PHPUnit\Framework\TestCase;
 
 class SalaryTest extends TestCase
@@ -43,5 +44,12 @@ class SalaryTest extends TestCase
                 '$expected' => new Salary(17),
             ],
         ];
+    }
+
+    public function testSalaryCantBeLowerThanZero(): void
+    {
+        $this->expectException(InvalidArgumentException::class);
+
+        new Salary(-1);
     }
 }

@@ -24,6 +24,7 @@
         "symfony/yaml": "6.0.*"
     },
     "require-dev": {
+        "infection/infection": "^0.26.10",
         "phpunit/phpunit": "^9.5",
         "psalm/plugin-symfony": "^3.1",
         "slevomat/coding-standard": "^7.2",
@@ -81,7 +82,8 @@
         "psalm": "./vendor/bin/psalm --show-info=true",
         "phpcs": "./vendor/bin/phpcs src --standard=phpcs.xml.dist",
         "phpcbf": "./vendor/bin/phpcbf src --standard=phpcs.xml.dist",
-        "tests": "bin/console doctrine:migrations:migrate --allow-no-migration --no-interaction --env=test && bin/phpunit"
+        "tests": "bin/console doctrine:migrations:migrate --allow-no-migration --no-interaction --env=test && bin/phpunit",
+        "infection": "./vendor/bin/infection"
     },
     "conflict": {
         "symfony/symfony": "*"
